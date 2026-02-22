@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Flowers 4 Venezuela 🌸</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #e8f5e9, #f1f8e9, #fff9f0);
+      font-family: Georgia, serif;
+      padding: 40px 20px;
+    }
+
+    .title {
+      font-size: 1.5rem;
+      color: #2e7d32;
+      margin-bottom: 60px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      animation: fadein 2s ease forwards;
+      opacity: 0;
+      text-align: center;
+    }
+
+    .flower {
+      position: relative;
+      width: 120px;
+      height: 120px;
+      animation: bloom 1.8s ease forwards;
+      transform: scale(0);
+      margin-bottom: 100px;
+    }
+
+    @keyframes bloom {
+      0%   { transform: scale(0) rotate(0deg); opacity: 0; }
+      60%  { transform: scale(1.15) rotate(8deg); opacity: 1; }
+      100% { transform: scale(1) rotate(0deg); opacity: 1; }
+    }
+
+    .petal {
+      position: absolute;
+      width: 44px;
+      height: 65px;
+      border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+      top: 50%;
+      left: 50%;
+      transform-origin: bottom center;
+      margin-left: -22px;
+      margin-top: -65px;
+      opacity: 0.88;
+    }
+
+    .petal:nth-child(odd)  { background: #4caf50; } /* bright green */
+    .petal:nth-child(even) { background: #81c784; } /* soft green   */
+
+    .petal:nth-child(1) { transform: rotate(0deg); }
+    .petal:nth-child(2) { transform: rotate(45deg); }
+    .petal:nth-child(3) { transform: rotate(90deg); }
+    .petal:nth-child(4) { transform: rotate(135deg); }
+    .petal:nth-child(5) { transform: rotate(180deg); }
+    .petal:nth-child(6) { transform: rotate(225deg); }
+    .petal:nth-child(7) { transform: rotate(270deg); }
+    .petal:nth-child(8) { transform: rotate(315deg); }
+
+    .center {
+      position: absolute;
+      width: 38px;
+      height: 38px;
+      background: radial-gradient(circle, #fff176, #f9a825);
+      border-radius: 50%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 10;
+      box-shadow: 0 0 10px rgba(0,0,0,0.15);
+    }
+
+    .stem {
+      position: absolute;
+      width: 7px;
+      height: 90px;
+      background: linear-gradient(to bottom, #388e3c, #1b5e20);
+      bottom: -90px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-radius: 4px;
+    }
+
+    /* Leaves on the stem */
+    .leaf {
+      position: absolute;
+      width: 28px;
+      height: 14px;
+      background: #43a047;
+      border-radius: 50% 0 50% 0;
+    }
+
+    .leaf-left {
+      bottom: 30px;
+      left: -26px;
+      transform: rotate(-30deg);
+    }
+
+    .leaf-right {
+      bottom: 55px;
+      left: 7px;
+      transform: rotate(30deg);
+    }
+
+    .message {
+      font-size: 1.6rem;
+      color: #1b5e20;
+      animation: fadein 2.5s ease forwards;
+      opacity: 0;
+      text-align: center;
+      line-height: 1.7;
+      max-width: 360px;
+    }
+
+    .message span {
+      display: block;
+      font-size: 1.1rem;
+      color: #388e3c;
+      margin-top: 8px;
+      font-style: italic;
+    }
+
+    @keyframes fadein {
+      0%   { opacity: 0; transform: translateY(10px); }
+      40%  { opacity: 0; }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="title">🌿 For You 🌿</div>
+
+  <div class="flower">
+    <div class="petal"></div>
+    <div class="petal"></div>
+    <div class="petal"></div>
+    <div class="petal"></div>
+    <div class="petal"></div>
+    <div class="petal"></div>
+    <div class="petal"></div>
+    <div class="petal"></div>
+    <div class="center"></div>
+    <div class="stem">
+      <div class="leaf leaf-left"></div>
+      <div class="leaf leaf-right"></div>
+    </div>
+  </div>
+
+  <div class="message">
+    🌸 Flowers 4 Venezuela 🌸
+    <span>With love 💚</span>
+  </div>
+
+</body>
+</html>
