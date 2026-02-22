@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Flowers 4 Venezuela 🌸</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -18,9 +19,9 @@
     }
 
     .title {
-      font-size: 1.5rem;
+      font-size: 1.4rem;
       color: #2e7d32;
-      margin-bottom: 60px;
+      margin-bottom: 20px;
       letter-spacing: 2px;
       text-transform: uppercase;
       animation: fadein 2s ease forwards;
@@ -28,40 +29,69 @@
       text-align: center;
     }
 
+    .garden {
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      gap: 30px;
+      margin-bottom: 60px;
+    }
+
+    .flower-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
     .flower {
       position: relative;
-      width: 120px;
-      height: 120px;
-      animation: bloom 1.8s ease forwards;
+      width: 110px;
+      height: 110px;
       transform: scale(0);
-      margin-bottom: 100px;
+      opacity: 0;
+    }
+
+    .flower-wrap:nth-child(1) .flower { animation: bloom 1.6s ease 0.0s forwards; }
+    .flower-wrap:nth-child(2) .flower { animation: bloom 1.6s ease 0.3s forwards; }
+    .flower-wrap:nth-child(3) .flower { animation: bloom 1.6s ease 0.6s forwards; }
+
+    .flower-wrap:nth-child(2) .flower {
+      width: 130px;
+      height: 130px;
     }
 
     @keyframes bloom {
       0%   { transform: scale(0) rotate(0deg); opacity: 0; }
-      60%  { transform: scale(1.15) rotate(8deg); opacity: 1; }
+      60%  { transform: scale(1.12) rotate(8deg); opacity: 1; }
       100% { transform: scale(1) rotate(0deg); opacity: 1; }
     }
 
     .petal {
       position: absolute;
-      width: 44px;
-      height: 65px;
+      width: 40px;
+      height: 62px;
       border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
       top: 50%;
       left: 50%;
       transform-origin: bottom center;
-      margin-left: -22px;
-      margin-top: -65px;
+      margin-left: -20px;
+      margin-top: -62px;
       opacity: 0.88;
     }
 
-    .petal:nth-child(odd)  { background: #4caf50; } /* bright green */
-    .petal:nth-child(even) { background: #81c784; } /* soft green   */
+    .flower-wrap:nth-child(2) .petal {
+      width: 48px;
+      height: 74px;
+      margin-left: -24px;
+      margin-top: -74px;
+    }
 
-    .petal:nth-child(1) { transform: rotate(0deg); }
-    .petal:nth-child(2) { transform: rotate(45deg); }
-    .petal:nth-child(3) { transform: rotate(90deg); }
+    .petal:nth-child(odd)  { background: #4caf50; }
+    .petal:nth-child(even) { background: #81c784; }
+
+    .petal:nth-child(1) { transform: rotate(0deg);   }
+    .petal:nth-child(2) { transform: rotate(45deg);  }
+    .petal:nth-child(3) { transform: rotate(90deg);  }
     .petal:nth-child(4) { transform: rotate(135deg); }
     .petal:nth-child(5) { transform: rotate(180deg); }
     .petal:nth-child(6) { transform: rotate(225deg); }
@@ -70,8 +100,8 @@
 
     .center {
       position: absolute;
-      width: 38px;
-      height: 38px;
+      width: 34px;
+      height: 34px;
       background: radial-gradient(circle, #fff176, #f9a825);
       border-radius: 50%;
       top: 50%;
@@ -81,42 +111,61 @@
       box-shadow: 0 0 10px rgba(0,0,0,0.15);
     }
 
-    .stem {
-      position: absolute;
-      width: 7px;
-      height: 90px;
-      background: linear-gradient(to bottom, #388e3c, #1b5e20);
-      bottom: -90px;
-      left: 50%;
-      transform: translateX(-50%);
-      border-radius: 4px;
+    .flower-wrap:nth-child(2) .center {
+      width: 42px;
+      height: 42px;
     }
 
-    /* Leaves on the stem */
+    .stem {
+      width: 7px;
+      background: linear-gradient(to bottom, #388e3c, #1b5e20);
+      border-radius: 0 0 4px 4px;
+      position: relative;
+      opacity: 0;
+    }
+
+    .flower-wrap:nth-child(1) .stem { height: 85px;  animation: grow 1s ease 0.5s forwards; }
+    .flower-wrap:nth-child(2) .stem { height: 110px; animation: grow 1s ease 0.2s forwards; width: 8px; }
+    .flower-wrap:nth-child(3) .stem { height: 80px;  animation: grow 1s ease 0.7s forwards; }
+
+    @keyframes grow {
+      0%   { opacity: 0; transform: scaleY(0); transform-origin: bottom; }
+      100% { opacity: 1; transform: scaleY(1); transform-origin: bottom; }
+    }
+
     .leaf {
       position: absolute;
-      width: 28px;
-      height: 14px;
+      width: 26px;
+      height: 13px;
       background: #43a047;
       border-radius: 50% 0 50% 0;
     }
 
-    .leaf-left {
-      bottom: 30px;
-      left: -26px;
-      transform: rotate(-30deg);
-    }
+    .leaf-left  { left: -24px; transform: rotate(-30deg); }
+    .leaf-right { left: 7px;   transform: rotate(30deg);  }
 
-    .leaf-right {
-      bottom: 55px;
-      left: 7px;
-      transform: rotate(30deg);
+    .flower-wrap:nth-child(1) .leaf-left  { bottom: 25px; }
+    .flower-wrap:nth-child(1) .leaf-right { bottom: 48px; }
+    .flower-wrap:nth-child(2) .leaf-left  { bottom: 30px; }
+    .flower-wrap:nth-child(2) .leaf-right { bottom: 58px; }
+    .flower-wrap:nth-child(3) .leaf-left  { bottom: 22px; }
+    .flower-wrap:nth-child(3) .leaf-right { bottom: 44px; }
+
+    .ground {
+      width: 260px;
+      height: 12px;
+      background: linear-gradient(to right, #a5d6a7, #66bb6a, #a5d6a7);
+      border-radius: 50%;
+      opacity: 0.6;
+      margin-bottom: 24px;
+      animation: fadein 2s ease 1s forwards;
+      opacity: 0;
     }
 
     .message {
       font-size: 1.6rem;
       color: #1b5e20;
-      animation: fadein 2.5s ease forwards;
+      animation: fadein 2.5s ease 1s forwards;
       opacity: 0;
       text-align: center;
       line-height: 1.7;
@@ -132,7 +181,7 @@
     }
 
     @keyframes fadein {
-      0%   { opacity: 0; transform: translateY(10px); }
+      0%   { opacity: 0; transform: translateY(8px); }
       40%  { opacity: 0; }
       100% { opacity: 1; transform: translateY(0); }
     }
@@ -140,27 +189,69 @@
 </head>
 <body>
 
-  <div class="title">🌿 For You 🌿</div>
+  <div class="garden">
 
-  <div class="flower">
-    <div class="petal"></div>
-    <div class="petal"></div>
-    <div class="petal"></div>
-    <div class="petal"></div>
-    <div class="petal"></div>
-    <div class="petal"></div>
-    <div class="petal"></div>
-    <div class="petal"></div>
-    <div class="center"></div>
-    <div class="stem">
-      <div class="leaf leaf-left"></div>
-      <div class="leaf leaf-right"></div>
+    <div class="flower-wrap">
+      <div class="flower">
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="center"></div>
+      </div>
+      <div class="stem">
+        <div class="leaf leaf-left"></div>
+        <div class="leaf leaf-right"></div>
+      </div>
     </div>
+
+    <div class="flower-wrap">
+      <div class="flower">
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="center"></div>
+      </div>
+      <div class="stem">
+        <div class="leaf leaf-left"></div>
+        <div class="leaf leaf-right"></div>
+      </div>
+    </div>
+
+    <div class="flower-wrap">
+      <div class="flower">
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="center"></div>
+      </div>
+      <div class="stem">
+        <div class="leaf leaf-left"></div>
+        <div class="leaf leaf-right"></div>
+      </div>
+    </div>
+
   </div>
+
+  <div class="ground"></div>
 
   <div class="message">
     🌸 Flowers 4 Venezuela 🌸
-    <span>With love 💚</span>
+    <span>Love Nic 💚</span>
   </div>
 
 </body>
